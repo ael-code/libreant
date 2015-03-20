@@ -17,6 +17,9 @@ LibreAnt
     :target: https://libreant.readthedocs.org/en/latest
     :alt: Documentation Status
 
+.. image:: http://insomnia-lab.github.io/libreant/media/logo.svg
+    :alt: Logo
+    :align: right
 
 This is libreant: a software to manage both your ebooks and your physical books.
 Its approach is:
