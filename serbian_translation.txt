@@ -1,0 +1,179 @@
+# Serbian (Cyrillic, Serbia) translations for PROJECT.
+# Copyright (C) 2015 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: insomnia@acari.org\n"
+"POT-Creation-Date: 2015-07-02 16:44-0500\n"
+"PO-Revision-Date: 2015-07-02 16:49-0500\n"
+"Last-Translator: jelena reljic <jelena.reljic@me.com>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.3\n"
+
+#: /home/libreant/libreant/webant/webant.py:95
+#, python-format
+msgid "Required field \"%(mField)s is missing" 
+msgstr "" Obavezno polje nedostaje, Oбавезно поље недостаје
+
+#: /home/libreant/libreant/webant/webant.py:134
+msgid "preset not found" Preset nije pronađen, Пресет није пронађен
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/add.html:5
+#: /home/libreant/libreant/webant/templates/add.html:33
+msgid "Add new" Dodaj novi, Додај нови
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/add.html:26
+#: /home/libreant/libreant/webant/templates/error.html:5
+#: /home/libreant/libreant/webant/templates/error.html:18
+msgid "Error" Greška, Грешка
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/add.html:26
+msgid "Could not load the page because your browser does not support javascript"
+msgstr "" Nije moguće učitati stranicu jer vaš pretraživač ne podržava javascripт, Није могуће учитати страницу јер ваш претраживач не подржава javascript
+
+#: /home/libreant/libreant/webant/templates/add.html:56
+msgid "Language" Jezik, Језик
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/add.html:58
+msgid "Select a language" Izaberi jezik, Изабери језик
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/add.html:65
+#: /home/libreant/libreant/webant/templates/add.html:91
+#: /home/libreant/libreant/webant/templates/add.html:153
+msgid "Description" Opis, Опис
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/add.html:66
+#: /home/libreant/libreant/webant/templates/add.html:92
+#: /home/libreant/libreant/webant/templates/add.html:154
+msgid "Field description" Opis polja, Опис поља
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/add.html:67
+msgid "This is the language that you are using to fill this form."
+msgstr "" Ovo je jezik koji koristite da popunite ovaj obrazac, Ово је језик који користите да попуните овај образац
+
+#: /home/libreant/libreant/webant/templates/add.html:80
+msgid "Select a value" Selektuj vrednost, Селектуј вредност
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/add.html:131
+msgid "Reset" Resetovanje, Ресетовање
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/add.html:132
+msgid "Add" Dodaj, Додај
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/add.html:148
+msgid "Choose file" Izaberi kartoteku, Изабери картотеку 
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/add.html:155
+msgid " Here you can insert specific info about this file."
+msgstr "" Ovde možete ubaciti određenu informaciju o ovoj kartoteci, Овде можете убацити одређену информацију о овој картотетци
+
+#: /home/libreant/libreant/webant/templates/add.html:165
+msgid "custom key" Prilagodljiv taster, Прилагодљив тастер 
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/add.html:168
+msgid "custom value" Prilagodljiva vrednost, Прилагодљива вредност
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/add.html:174
+msgid "close" Zatvori, Затвори
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/add.html:175
+msgid ""
+"With these additional fields you can add more information to your "
+"item.<br>\\\n"
+"            In the form on the left you need to enter a keyword that "
+"identifies the\\\n"
+"            attribute that you go to put in the form on the right.<br>\\\n"
+"            For example, you can add information about the type of cover "
+"of a book\\\n"
+"            in this way: \"key: cover\", \"value: rigid\"."
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/details.html:40
+msgid "Details" Detalji, Детаљи
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/details.html:44
+msgid "Field" Polje, Поље
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/details.html:45
+msgid "Value" Vrednost, Вредност
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/details.html:62
+msgid "Similar books" Slične knjige, Сличне књиге
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/index.html:16
+msgid "What do you want to read today?" Šta želiš da čitaš danas? Шта желиш да читаш данас?
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/navbar.html:17
+msgid "Add item" Dodaj stavku, Додај ставку
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/navbar.html:19
+msgid "All items" Sve stavke, Све ставке
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/navbar.html:21
+msgid "Recently added" Nedavno dodati, Недавно додати
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/os_search.html:12
+msgid "Search results" Traži rezultate, Тражи резултате
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/os_search.html:13
+#: /home/libreant/libreant/webant/templates/search.html:37
+#, python-format
+msgid "%(num)s result was found for" 
+msgid_plural "%(num)s results were found for"
+msgstr[0] “Nijedan rezultat nije pronađen” Ниједан резултат није пронађен
+msgstr[1] “Jedan rezultat je pronađen” Један резултата је пронађен 
+msgstr[2] “Više rezultata je pronađeno” Више резултата је пронађено
+
+#: /home/libreant/libreant/webant/templates/os_search.html:18
+#: /home/libreant/libreant/webant/templates/search.html:45
+msgid "Sorry, no books matching your query" Izvini, ne postoji knjiga koja odgovara tvom upitu , Извини, не постоји књига која одговара твом упиту
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/recents.html:5
+msgid "Recents” Nedavne, Недавне
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/recents.html:32
+msgid "Recently added items" Nedavno dodate stavke, Недавно додате ставке
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/recents.html:40
+msgid "No items added since now" Nema dodatih stavki, Нема додатих ставки
+msgstr ""
+
+#: /home/libreant/libreant/webant/templates/search.html:6
+#: /home/libreant/libreant/webant/templates/searchbar.html:9
+msgid "Search" Traži, Тражи
+msgstr ""
+
