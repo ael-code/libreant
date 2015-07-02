@@ -174,7 +174,7 @@ def create_app(conf):
 
     @app.babel.localeselector
     def get_locale():
-        return request.accept_languages.best_match(['en', 'it', 'sq'])
+        return request.accept_languages.best_match(['en', 'it', 'sq', 'sr'])
 
     @app.template_filter('timepassedformat')
     def timepassedformat_filter(timestamp):
