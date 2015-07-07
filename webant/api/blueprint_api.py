@@ -2,7 +2,8 @@ import json
 import tempfile
 import os
 
-from flask import Blueprint, current_app, jsonify, request, url_for
+from flask import Blueprint, current_app, jsonify, request, url_for,\
+                  redirect, render_template
 from werkzeug import secure_filename
 
 from archivant.archivant import Archivant
@@ -28,8 +29,14 @@ def make_success_response(message, http_code=200):
     return response
 
 
-api = Blueprint('api', __name__)
+api = Blueprint('api', __name__,
+                template_folder="swagger/templates",
+                static_folder="swagger/static",
+                static_url_path="/docs")
 
+@api.route('/docs/')
+def docs():
+    return render_template('swagger_index.html')
 
 @api.errorhandler(ApiError)
 def apiErrorHandler(apiErr):
