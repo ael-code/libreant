@@ -1,0 +1,30 @@
+{
+  "apiVersion": "0.1",
+  "swaggerVersion": "1.2",
+  "apis": [
+    {
+      "path": "/../users",
+      "description": "Operations about users"
+    },
+    {
+      "path": "/../catches",
+      "description": "Operations about users"
+    },
+    {
+      "path": "/../catchbooks",
+      "description": "Operations about catchbooks"
+    }
+  ],
+  "authorizations": {
+    "apiKey": {
+        "type": "apiKey",
+        "passAs": "header",
+        "keyname": "Authorization"
+    }
+  },
+  "info": {
+    "title": "Catch server api",
+    "description": "This server expose all the apis needed by the mobile app for Catch"
+  }
+}
+

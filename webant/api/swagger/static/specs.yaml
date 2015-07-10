@@ -1,0 +1,27 @@
+swagger: '2.0'
+info:
+  title: Libreant
+  description: General pourpose media archive manager
+  version: "1.0"
+# array of all schemes that your API supports
+# schemes:
+#  - http
+#  - https
+
+# will be prefixed to all paths
+basePath: /api/v1
+produces:
+  - application/json
+paths:
+  /volumes/{volumeid}:
+    get:
+      summary: Retrieve volume informations.
+      # description:
+      parameters:
+        - name: volumeid
+          in: path
+          description: Volume ID.
+          required: true
+      responses:
+        200:
+          description: Volume informations.
