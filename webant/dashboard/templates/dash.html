@@ -54,10 +54,10 @@ Libreant | {%trans%}Admin{%endtrans%}
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        <a href="#test"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-users fa-fw"></i> Users</a>
+                        <a href="#users"><i class="fa fa-users fa-fw"></i> Users</a>
                     </li>
                 </ul>
             </div>
@@ -89,9 +89,16 @@ Libreant | {%trans%}Admin{%endtrans%}
     {{super()}}
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="{{url_for('.static', filename='js/metisMenu.min.js')}}"></script>
+    <script src="{{url_for('.static', filename='js/lib/metisMenu.min.js')}}"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="{{url_for('.static', filename='js/sb-admin-2.js')}}"></script>
+    <script src="{{url_for('.static', filename='js/lib/sb-admin-2.js')}}"></script>
+
+    <!-- Require: js dependency library -->
+    <script data-main="{{url_for('.static', filename='js/app/main')}}" src="{{url_for('.static', filename='js/lib/require.js')}}"></script>
+    <script>
+        var STATIC_FOLDER = "{{url_for('.static', filename='')}}";
+    </script>
+
 
 {% endblock scripts %}
