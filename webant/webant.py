@@ -69,13 +69,15 @@ class LibreantViewApp(LibreantCoreApp):
         defaults = {
             'BOOTSTRAP_SERVE_LOCAL': True,
             'AGHERANT_DESCRIPTIONS': [],
+            'API_URL': "/api/v1",
+            'DASHBOARD_URL': "/dashboard"
         }
         defaults.update(conf)
         super(LibreantViewApp, self).__init__(import_name, defaults)
         if self.config['AGHERANT_DESCRIPTIONS']:
             self.register_blueprint(agherant, url_prefix='/agherant')
-        self.register_blueprint(api, url_prefix='/api/v1')
-        self.register_blueprint(dashboard, url_prefix='/dashboard')
+        self.register_blueprint(api, url_prefix=self.config['API_URL'])
+        self.register_blueprint(dashboard, url_prefix=self.config['DASHBOARD_URL'])
         Bootstrap(self)
         self.babel = Babel(self)
         self.available_translations = [l.language for l in self.babel.list_translations()]
