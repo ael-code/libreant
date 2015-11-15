@@ -10,6 +10,7 @@ define([
         routes: {
             '': 'home',
             'index': 'home',
+            'users-and-groups': 'usersAndGroups'
         },
 
         initialize: function() {console.log('Initializing router')},
@@ -22,6 +23,14 @@ define([
                 console.log('Moving to "home"');
                 var HomeV = new HomeV();
                 HomeV.render();
+            });
+        },
+
+        usersAndGroups: function(){
+            require(['views/users-and-groups'], function(UGView){
+                console.log('Moving to "users & groups"');
+                var UGView = new UGView();
+                UGView.render();
             });
         }
     });
