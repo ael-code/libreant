@@ -10,7 +10,8 @@ define([
         routes: {
             '': 'home',
             'index': 'home',
-            'users-and-groups': 'usersAndGroups'
+            'users-and-groups': 'usersAndGroups',
+            '*path': 'notFoundRoute'
         },
 
         initialize: function() {console.log('Initializing router')},
@@ -31,6 +32,13 @@ define([
                 console.log('Moving to "users & groups"');
                 var UGView = new UGView();
                 UGView.render();
+            });
+        },
+
+        notFoundRoute: function(path){
+            require(['views/not-found'], function(NotFoundV){
+                var notFoundV = new NotFoundV();
+                notFoundV.render();
             });
         }
     });
