@@ -20,5 +20,5 @@ require([
     'backbone', 'mainrouter'
 ], function (Backbone, Router) {
     new Router();
-    Backbone.history.start({});
+    Backbone.history.start({pushState: true, root: DASHBOARD_URL+"/"});
 });

@@ -30,7 +30,7 @@ Libreant | {%trans%}Admin{%endtrans%}
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Libreant Admin</a>
+            <a class="navbar-brand" href="{{ dashboard_url }}">Libreant Admin</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -56,10 +56,10 @@ Libreant | {%trans%}Admin{%endtrans%}
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a href="#test"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        <a href="{{ dashboard_url }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="#users"><i class="fa fa-users fa-fw"></i> Users</a>
+                        <a href="{{ dashboard_url }}/users-and-groups"><i class="fa fa-users fa-fw"></i> Users & Groups</a>
                     </li>
                 </ul>
             </div>
@@ -89,7 +89,8 @@ Libreant | {%trans%}Admin{%endtrans%}
     <script data-main="{{url_for('.static', filename='js/app/main')}}" src="{{url_for('.static', filename='js/lib/require.js')}}"></script>
     <script>
         var STATIC_FOLDER = "{{url_for('.static', filename='')}}";
-        var API_URL = "{{ api_url }}"
+        var API_URL = "{{ api_url }}";
+        var DASHBOARD_URL = "{{ dashboard_url }}";
     </script>
 
 
