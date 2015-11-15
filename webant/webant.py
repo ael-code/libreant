@@ -16,6 +16,7 @@ from util import requestedFormat, send_attachment_file
 from archivant import Archivant
 from archivant.exceptions import NotFoundException, FileOpNotSupported
 from agherant import agherant
+from dashboard import dashboard
 from api.blueprint_api import api
 from webserver_utils import gevent_run
 import users
@@ -74,6 +75,7 @@ class LibreantViewApp(LibreantCoreApp):
         if self.config['AGHERANT_DESCRIPTIONS']:
             self.register_blueprint(agherant, url_prefix='/agherant')
         self.register_blueprint(api, url_prefix='/api/v1')
+        self.register_blueprint(dashboard, url_prefix='/dashboard')
         Bootstrap(self)
         self.babel = Babel(self)
         self.available_translations = [l.language for l in self.babel.list_translations()]
