@@ -11,7 +11,8 @@ requirejs.config({
         lib:  SF + "js/lib",
         backbone:  SF + "js/lib/backbone.min",
         underscore: SF + "js/lib/underscore.min",
-        text: SF + "js/lib/text"
+        text: SF + "js/lib/text",
+        bootstraptable: SF + "js/lib/bootstrap-table.min"
     }
 });
 
