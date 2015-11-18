@@ -11,6 +11,7 @@ define([
             '': 'home',
             'index': 'home',
             'users-and-groups': 'usersAndGroups',
+            'users/:uid': 'user',
             '*path': 'notFoundRoute'
         },
 
@@ -32,6 +33,13 @@ define([
                 console.log('Moving to "users & groups"');
                 var UGView = new UGView();
                 UGView.render();
+            });
+        },
+
+        user: function(uid){
+            require(['views/user'], function(UserV){
+                var UserV = new UserV(uid);
+                UserV.render();
             });
         },
 
