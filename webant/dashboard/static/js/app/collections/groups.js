@@ -1,7 +1,11 @@
+'use strict'
+
 define([
     'backbone',
-], function (Backbone) {
+    'models/group'
+], function (Backbone, GroupM) {
     var GroupsCll = Backbone.Collection.extend({
+      model: GroupM,
       url: API_URL + '/groups/',
       parse: function(response) {
         return response.data;
