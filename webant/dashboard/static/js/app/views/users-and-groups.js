@@ -32,12 +32,11 @@ define([
             this.activateForms();
             this.usersTable = this.$('#users-table').bootstrapTable();
             this.usersTable.on('click-row.bs.table', function (e, row, $element) {
-                console.log(row, $element);
                 Window.router.navigate("users/"+row.id, {trigger: true});
             });
             this.groupsTable = this.$('#groups-table').bootstrapTable();
             this.groupsTable.on('click-row.bs.table', function (e, row, $element) {
-                console.log(row, $element);
+                Window.router.navigate("groups/"+row.id, {trigger: true});
             });
         },
 

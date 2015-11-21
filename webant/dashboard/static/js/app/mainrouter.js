@@ -12,6 +12,7 @@ define([
             'index': 'home',
             'users-and-groups': 'usersAndGroups',
             'users/:uid': 'user',
+            'groups/:gid': 'group',
             '*path': 'notFoundRoute'
         },
 
@@ -40,6 +41,13 @@ define([
             require(['views/user'], function(UserV){
                 var UserV = new UserV(uid);
                 UserV.render();
+            });
+        },
+
+        group: function(gid){
+            require(['views/group'], function(GroupV){
+                var GroupV = new GroupV(gid);
+                GroupV.render();
             });
         },
 
