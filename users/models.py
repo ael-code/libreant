@@ -67,6 +67,11 @@ class Capability(BaseModel):
         by this capability"""
         return self.match_domain(dom) and self.match_action(act)
 
+    def to_dict(self):
+        return {'id': self.id,
+                'domain': self.regToSim(self.domain),
+                'actions':Action.bitmask_to_list(self.action)}
+
 
 class Action():
     """Actions utiliy class
