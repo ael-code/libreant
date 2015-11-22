@@ -1,1 +1,27 @@
 <h1><i class="fa fa-user"></i> <%= name %> </h1>
+<br>
+<button class="btn" data-toggle="modal" data-target="#change-pwd-modal">Change password</button>
+
+<!-- Change password modal -->
+<div class="modal fade" id="change-pwd-modal" tabindex="-1" role="dialog" aria-labelledby="change-pwd-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Change password</h4>
+      </div>
+      <div class="modal-body">
+          <div class="hide alert alert-warning text-center" role="alert"></div>
+          <form id="change-pwd-form">
+            <div class="form-group">
+              <label for="password">New password:</label>
+              <input type="password" class="form-control" name="password" id="password" required>
+            </div>
+            <p class="text-right">
+              <button type="submit" class="btn btn-primary">Change password</button>
+            </p>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
