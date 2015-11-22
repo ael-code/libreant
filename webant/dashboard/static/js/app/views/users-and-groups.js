@@ -20,12 +20,12 @@ define([
         el: $('#page-wrapper'),
 
         initialize: function () {
-            _.bindAll(this, "render", "populateUsersTable",
-                            "populateGroupsTable", "addUserCallBack");
+            _.bindAll(this, "render", "populateUsersTable", "populateGroupsTable",
+                            "addUserCallBack", "addGroupCallBack");
             this.users = new UsersCll();
             this.users.on("sync", this.populateUsersTable);
             this.groups = new GroupsCll();
-            this.users.on("sync", this.populateGroupsTable);
+            this.groups.on("sync", this.populateGroupsTable);
         },
 
         render: function () {
@@ -46,6 +46,8 @@ define([
         activateForms: function() {
             this.$("#add-user-form").submit(this.addUserCallBack);
             this.$("#add-user-modal").on('hidden.bs.modal', function(e){ $(e.target).find(".alert").addClass('hide');});
+            this.$("#add-group-form").submit(this.addGroupCallBack);
+            this.$("#add-group-modal").on('hidden.bs.modal', function(e){ $(e.target).find(".alert").addClass('hide');});
         },
 
         populateUsersTable: function(){
@@ -72,6 +74,26 @@ define([
 
         addUserErrorCallback: function(model, response){
             var alert = $("#add-user-modal .alert");
+            alert.html("<b>Error: </b>" + response.responseJSON.error.details);
+            alert.removeClass('hide');
+        },
+
+        addGroupCallBack: function(ev) {
+            ev.preventDefault();
+            var groupElements = this.$("#add-group-form")[0].elements;
+            this.groups.create({name: groupElements.name.value},
+                               {wait: true,
+                                success: this.hideGroupModal,
+                                error: this.addGroupErrorCallback});
+        },
+
+
+        hideGroupModal: function(){
+            $("#add-group-modal").modal('hide');
+        },
+
+        addGroupErrorCallback: function(model, response){
+            var alert = $("#add-group-modal .alert");
             alert.html("<b>Error: </b>" + response.responseJSON.error.details);
             alert.removeClass('hide');
         },
