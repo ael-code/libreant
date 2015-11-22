@@ -1,11 +1,9 @@
 <h2>Users</h2>
-
 <div id="users-toolbar">
     <button class="btn" data-toggle="modal" data-target="#add-user-modal">
         <i class="fa fa-user-plus"></i>
     </button>
 </div>
-
 <table id="users-table"
        data-search="true"
        data-toolbar="#users-toolbar"
@@ -19,6 +17,11 @@
 </table>
 <br>
 <h2>Groups</h2>
+<div id="users-toolbar">
+    <button class="btn" data-toggle="modal" data-target="#add-group-modal">
+        <i class="fa fa-plus"></i>
+    </button>
+</div>
 <table id="groups-table"
        data-toolbar="#group-toolbar"
        data-search="true"
@@ -30,6 +33,7 @@
         </tr>
     </thead>
 </table>
+<br>
 
 <!-- Add user modal -->
 <div class="modal fade" id="add-user-modal" tabindex="-1" role="dialog" aria-labelledby="add-user-modal">
@@ -40,6 +44,7 @@
         <h4 class="modal-title">Add new user</h4>
       </div>
       <div class="modal-body">
+          <div class="hide alert alert-warning text-center" role="alert"></div>
           <form id="add-user-form">
             <div class="form-group">
                 <label for="username">Username:</label>
