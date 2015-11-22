@@ -19,6 +19,6 @@ requirejs.config({
 require([
     'backbone', 'mainrouter'
 ], function (Backbone, Router) {
-    Window.router = new Router();
+    window.router = new Router();
     Backbone.history.start({pushState: true, root: DASHBOARD_URL+"/"});
 });
