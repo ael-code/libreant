@@ -143,7 +143,13 @@ class DB(object):
             }
         }}
 
-        if not self.es.indices.exists(self.index_name):
+        if self.es.indices.exists(self.index_name):
+            old_mappings = self.es.indices.get_mapping(self.index_name)[self.index_name]['mappings']
+
+            if cmp(old_mappings, maps) != 0:
+                log.warn('An old or wrong mapping has been found for index: "{0}"'.format(self.index_name))
+        else:
+            log.debug("Creating missing index: '{0}'".format(self.index_name))
             self.es.indices.create(index=self.index_name,
                                    body={'settings': settings,
                                          'mappings': maps})
