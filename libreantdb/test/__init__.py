@@ -3,7 +3,7 @@ from elasticsearch import Elasticsearch
 
 
 es = Elasticsearch()
-db = DB(es, index_name='test-book')
+db = DB(es, index_name='test-book', testing=True)
 
 
 def setUpPackage():

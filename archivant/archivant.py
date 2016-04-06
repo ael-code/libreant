@@ -36,7 +36,8 @@ class Archivant():
         defaults = {
             'FSDB_PATH': None,
             'ES_HOSTS': None,
-            'ES_INDEXNAME': None
+            'ES_INDEXNAME': None,
+            'TESTING': False
         }
         defaults.update(conf)
         self._config = defaults
@@ -57,7 +58,8 @@ class Archivant():
     def _db(self):
         if self.__db is None:
             db = DB(Elasticsearch(hosts=self._config['ES_HOSTS']),
-                    index_name=self._config['ES_INDEXNAME'])
+                    index_name=self._config['ES_INDEXNAME'],
+                    testing=self._config['TESTING'])
             db.setup_db()
             self.__db = db
         return self.__db

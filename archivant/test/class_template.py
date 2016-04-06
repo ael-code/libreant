@@ -23,7 +23,8 @@ class TestArchivant():
     def setUp(self):
         self.tmpDir = mkdtemp(prefix=self.FSDB_PATH_PREFIX)
         conf = {'ES_INDEXNAME': self.TEST_ES_INDEX,
-                'FSDB_PATH': self.tmpDir}
+                'FSDB_PATH': self.tmpDir,
+                'TESTING': True}
         self.arc = Archivant(conf)
 
     def tearDown(self):

@@ -34,7 +34,8 @@ class LibreantCoreApp(Flask):
             'ES_INDEXNAME': 'libreant',
             'USERS_DATABASE': "",
             'PWD_ROUNDS': None,
-            'PWD_SALT_SIZE': None
+            'PWD_SALT_SIZE': None,
+            'TESTING': False,
         }
         defaults.update(conf)
         self.config.update(defaults)
@@ -45,7 +46,7 @@ class LibreantCoreApp(Flask):
         '''
         self._logger = getLogger(self.import_name)
 
-        self.archivant = Archivant(conf={k: self.config[k] for k in ('FSDB_PATH', 'ES_HOSTS', 'ES_INDEXNAME')})
+        self.archivant = Archivant(conf={k: self.config[k] for k in ('TESTING', 'FSDB_PATH', 'ES_HOSTS', 'ES_INDEXNAME')})
         self.presetManager = PresetManager(self.config['PRESET_PATHS'])
 
         if self.config['USERS_DATABASE']:

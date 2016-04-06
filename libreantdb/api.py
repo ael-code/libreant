@@ -75,11 +75,12 @@ class DB(object):
         }
     '''
     # Setup {{{2
-    def __init__(self, es, index_name):
+    def __init__(self, es, index_name, testing=False):
         self.es = es
         self.index_name = index_name
         # book_validator can adjust the book, and raise if it's not valid
         self.book_validator = validate_book
+        self.testing = testing
 
     def setup_db(self, wait_for_ready=True):
         ''' Create and configure index
@@ -137,6 +138,10 @@ class DB(object):
                 }
             }
         }}
+
+        if self.testing:
+            settings.update({"number_of_shards": 1,
+                             "number_of_replicas": 0})
 
         if not self.es.indices.exists(self.index_name):
             self.es.indices.create(index=self.index_name,
