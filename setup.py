@@ -110,6 +110,7 @@ conf = dict(
           'Flask-Babel',
           'flask-script',
           'Flask-Authbone >=0.2',
+
           'Flask',
           'opensearch',
           'Fsdb',
