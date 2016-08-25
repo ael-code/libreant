@@ -113,6 +113,7 @@ conf = dict(
           'Flask',
           'opensearch',
           'Fsdb',
+
           'click',
 
           'peewee',
