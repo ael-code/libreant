@@ -1,0 +1,21 @@
+version: '3'
+services:
+  libreant:
+    build:
+      context: .
+      args:
+       - ES_VERSION=6.x
+    environment:
+     - LIBREANT_ES_HOSTS=elasticsearch:9200
+    ports:
+     - "5000:5000"
+  elasticsearch:
+    image: "docker.elastic.co/elasticsearch/elasticsearch-oss:6.0.0"
+    environment:
+      # https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-configuration-memory.html
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
