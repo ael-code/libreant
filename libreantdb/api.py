@@ -10,6 +10,11 @@ from exceptions import MappingsException
 import logging
 log = logging.getLogger(__name__)
 
+# https://www.elastic.co/guide/en/elasticsearch/reference/5.5/string.html
+TEXT = 'text' if es_version[0] >= 5 else 'string'
+
+FALSE = 'false' if es_version[0] >= 5 else 'no'
+
 
 def current_time_millisec():
     return int(round(time.time() * 10**3))
@@ -86,19 +91,19 @@ class DB(object):
     '''
 
     properties = {
-        "_insertion_date" : {
+        "_insertion_date": {
             "type": "long",
             "null_value": 0},
         "_language": {
-            "type": "string",
-            "index": "no"},
+            "type": TEXT,
+            "index": FALSE},
         "_text_en": {
-            "type": "string",
+            "type": TEXT,
             "analyzer": "english"},
         "_text_it": {
-            "type": "string",
+            "type": TEXT,
             "analyzer": "it_analyzer"},
-        }
+    }
 
     # Just like the default one
     # http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/analysis-lang-analyzer.html#italian-analyzer
@@ -320,9 +325,6 @@ class DB(object):
         return self._search(body=query, size=size)
 
     def get_books_simplequery(self, query):
-        return self._search(self._get_search_field('_all', query))
-
-    def get_books_multilanguage(self, query):
         return self._search({'query': {'multi_match':
                                        {'query': query, 'fields': '_text_*'}
                                        }})
@@ -334,7 +336,7 @@ class DB(object):
         return self._search(self._get_search_field('actors', authorname))
 
     def get_book_by_id(self, id):
-        return self.es.get(index=self.index_name, id=id)
+        return self.es.get(index=self.index_name, id=id, doc_type='book')
 
     def get_books_querystring(self, query, **kargs):
         q = {'query': query, 'fields': ['_text_*']}
@@ -359,17 +361,15 @@ class DB(object):
     # End queries }}}
 
     # Operations {{{2
-    def add_book(self, **book):
+    def add_book(self, body, doc_type='book'):
         '''
         Call it like this:
             db.add_book(doc_type='book',
             body={'title': 'foobar', '_language': 'it'})
         '''
-        if 'doc_type' not in book:
-            book['doc_type'] = 'book'
-        book['body'] = validate_book(book['body'])
-        book['body']['_insertion_date'] = current_time_millisec()
-        return self.es.create(index=self.index_name, **book)
+        body = validate_book(body)
+        body['_insertion_date'] = current_time_millisec()
+        return self.es.index(index=self.index_name, doc_type=doc_type, body=body)
 
     def delete_book(self, id):
         self.es.delete(index=self.index_name,
@@ -381,7 +381,7 @@ class DB(object):
         def delete_action_gen():
             scanner = scan(self.es,
                            index=self.index_name,
-                           query={'query':{'match_all':{}},'fields': []})
+                           query={'query': {'match_all':{}}})
             for v in scanner:
                 yield { '_op_type': 'delete',
                         '_index': self.index_name,

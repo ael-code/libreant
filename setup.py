@@ -94,7 +94,9 @@ def get_es_requirements(es_version):
     # accepts version range in the form `2.x`
     es_version = es_version.replace('x', '0')
     es_version = map(int, es_version.split('.'))
-    if es_version >= [5]:
+    if es_version >= [6]:
+        return ">=6.0.0, <7.0.0"
+    elif es_version >= [5]:
         return ">=5.0.0, <6.0.0"
     elif es_version >= [2]:
         return ">=2.0.0, <3.0.0"
@@ -130,12 +132,13 @@ conf = dict(
           'flask-bootstrap <=4',
           'Flask-Babel',
           'Flask-Authbone >=0.2.2',
-          'Flask <= 0.11.1',
+          'Flask <= 0.12',
           'opensearch',
-          'Fsdb >= 0.3.3, <= 1.2.1',
+          'Fsdb >= 0.3.3, <= 1.2',
           'click',
           'peewee != 2.8.2, <= 2.10.2',
-          'passlib >=1.6, <1.7' # version 1.7 will drop python2 suport
+          # passlib version >= 1.7: Support for Python versions 2.5 and 3.0 through 3.2 have been dropped
+          'passlib >=1.6, <=1.7'
         ],
         package_data = {
           # If any package contains *.mo include them
