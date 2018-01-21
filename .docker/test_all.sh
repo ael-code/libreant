@@ -38,6 +38,22 @@ function test_libreant_search {
     curl -fs "localhost:5000/search?q=*:*"  > /dev/null
 }
 
+function check_detatched_container {
+	c_name=$1
+	running=`docker container inspect $c_name --format={{.State.Running}}`
+	if [ "$running" == "false" ]; then
+		echo -e "\nERROR: container '$c_name' is not running." 1>&2
+		echo "Container state: " 1>&2
+		docker container inspect $c_name --format="  Status:   {{.State.Status}}" 1>&2
+		docker container inspect $c_name --format="  ExitCode: {{.State.ExitCode}}" 1>&2
+		echo "Container's log tail:" 1>&2
+		docker logs --tail=10 $c_name
+		return 1
+	fi
+	return 0
+}
+
+
 # this implements a linear backoff
 # it will wait 1, then 2, then... $CURL_RETRIES seconds
 function with_backoff {
@@ -82,8 +98,9 @@ i=1
 for os in "${OSES[@]}" ; do
     echo "Testing libreant installation on ${os}"
     docker build --file="${LIBREANT_SRC}/.docker/dockerfile-${os}" --tag="${PREFIX}${os}" "${LIBREANT_SRC}"
-    docker run --rm -p 5000:5000 -d --name "${PREFIX}${os}" "${PREFIX}${os}"
-    if ! with_backoff test_libreant_homepage; then
+    docker run -p 5000:5000 -d --name "${PREFIX}${os}" "${PREFIX}${os}"
+	check_detatched_container "${PREFIX}${os}" || exit 1
+	if ! with_backoff test_libreant_homepage; then
         echo "Failed docker test $i/${#OSES[@]}: $os" >&2
         echo "at step 1 (home page)" >&2
         docker kill "${PREFIX}${os}"
